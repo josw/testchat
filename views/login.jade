@@ -1,0 +1,34 @@
+extends layout
+block content
+
+    p login
+
+    #login
+      form#join_form(method='post')
+          p Room Code :
+            input#room_code(autocomplete='off', name='room_code', value="#{room_code}")
+          p Name :
+            input#user_name(autocomplete='off', name='user_name', value="#{user_name}")
+          p
+            button Send
+
+
+    script(src='http://code.jquery.com/jquery-1.11.1.js')
+    script.
+      var token;
+      $(function() {
+        $('#join_form').on('submit', function() {
+          if (!$('#room_code').val() || !$('#user_name').val()) {
+              alert ('Input RoomCode and Name ');
+              return false;
+          }
+
+          $.post('/', function(data) {
+            token = data.token;
+            console.log (token);
+          });
+
+
+          return false;
+        });
+      })
