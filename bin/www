@@ -6,22 +6,22 @@ var io = require('socket.io')(http);
 
 app.set('port', process.env.PORT || 3000);
 
-//io.on('connection', function(socket) {
-//
-//    socket.broadcast.emit('hi');
-//    console.log('a user connected');
-//    socket.on('disconnect', function(){
-//        console.log('user disconnected');
-//    });
-//
-//    socket.on('chat message', function(msg){
-//        io.emit('chat message', msg);
-//        console.log('message: ' + msg);
-//    });
-//
-//
-//
-//})
+io.on('connection', function(socket) {
+
+    socket.broadcast.emit('hi');
+    console.log('a user connected');
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+
+    socket.on('chat message', function(msg){
+        io.emit('chat message', msg);
+        console.log('message: ' + msg);
+    });
+
+
+
+})
 
 var server = http.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);

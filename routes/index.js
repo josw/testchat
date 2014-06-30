@@ -6,7 +6,8 @@ var jwt_secret = 'foo bar big secret';
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('login', { title: 'Express' , room_code : '', user_name : ''});
+  //res.render('login', { title: 'Express' , room_code : '', user_name : ''});
+    res.render('login');
 });
 
 router.post('/', function(req, res) {
@@ -28,5 +29,9 @@ router.post('/', function(req, res) {
 //  res.redirect(301, '/poker');
 })
 
+
+router.post('/check' ,function(req, res) {
+
+})
 
 module.exports = router;
